@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta property="og:title" content="Give A NAM" />
+    {%if filename%}
+    <meta property="og:image" content="{{request.url_root + filename[1:]}}" />
+    {%else%}
+    <meta property="og:image" content="{{request.url_root + 'static/nam.png'}}" />
+    {%endif%}
+    <meta property="og:url" content="{{request.url}}" />
+    <meta property="og:site-name" content="Give A NAM"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Give a worthy meme a NAM" />
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+
+    <title>Give A NAM</title>
+    <link rel="stylesheet" href="/static/libraries/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/libraries/jquery-3.4.1.min.js"></script>
+    <script src="/static/libraries/popper.min.js"></script>
+    <script src="/static/libraries/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary p-3">
+        <a class="pr-5 navbar-brand" href="/">
+            <img src="/static/nam.png" id="logo" class='image-fluid' alt="">
+            Give A NAM
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item {%if request.path == '/schedule'%}active{%endif%}">
+                    <a class="nav-link" href="/schedule">Schedule</a>
+                </li> -->
+                <li class="nav-item {%if request.path == url_for('index')%}active{%endif%}">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item {%if request.path == url_for('upload_file')%}active{%endif%}">
+                    <a class="nav-link" href="{{url_for('upload_file') }}">Upload Image</a>
+                </li>
+            </ul>
+        </div>
+        
+    </nav>
+
+
+    <!-- <div class="progress m-3 w-50 mx-auto">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+      </div> -->
+
+
+    <div class="m-2 container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+
+
+</body>
+
+</html>
